@@ -1,24 +1,45 @@
-var builder = WebApplication.CreateBuilder(args);
+using MongoDB.Bson;
+using MongoDB.Driver;
+using System;
+using System.IO;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
+using challenge_20220626.Models;
+using challenge_20220626.Services;
 
-// Add services to the container.
+class Program{
+    
+    static void Main(string[] args){
+        
+        var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+        // Add services to the container.
+        builder.Services.Configure<ProductDatabaseSettings>
+            (builder.Configuration.GetSection("OpenFoodFactsDatabase"));
 
-var app = builder.Build();
+        builder.Services.AddSingleton<ProductServices>();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
+        builder.Services.AddControllers();
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen();
+
+        var app = builder.Build();
+
+        // Configure the HTTP request pipeline.
+        if (app.Environment.IsDevelopment())
+        {
+            app.UseSwagger();
+            app.UseSwaggerUI();
+        }
+
+        app.UseHttpsRedirection();
+
+        app.UseAuthorization();
+
+        app.MapControllers();
+
+        app.Run();
+    }
+    
 }
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();

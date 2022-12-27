@@ -7,7 +7,7 @@ namespace challenge_20220626.Models{
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string? id { get; set; }
-        public int code { get; set; }
+        public long code { get; set; }
         public string? barcode { get; set; }
         public string? status { get; set; }
         [BsonElement("imported_t")]
