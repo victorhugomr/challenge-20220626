@@ -16,9 +16,13 @@ Para usar o projeto, é necessário instalar:
 
 - MongoDB.Driver
 - HtmlAgilityPack
+- CsvHelper
 
-Para instalar o MongoDB.Driver, basta inserir o seguinte comando no Terminal do projeto:
+Para instalar o MongoDB.Driver, basta inserir o seguinte comando no Terminal:
 > dotnet add package MongoDB.Driver --version 2.18.0
 
-Para instalar o HtmlAgilityPack, basta inserir o seguinte comando no Terminal do projeto:
+Para instalar o HtmlAgilityPack, basta inserir o seguinte comando no Terminal:
 > dotnet add package HtmlAgilityPack --version 1.11.46
+
+Para instalar o CsvHelper, basta inserir o seguinte comando no Terminal:
+> dotnet add package CsvHelper --version 30.0.1
