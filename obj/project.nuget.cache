@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "xQLFnSGBEJW57q/coU0YLOZRH3ZjO/2QYjytkK9icNorAvDteYDXtuUjH582Qrhyu/SusZs2ybV7xq+VG1QUoQ==",
+  "dgSpecHash": "4n50ThD6UxYTpKJfil3UueGySewQVPsXMcdUg/0OGX1LBlGn0fcBEzIN62blV8Gho66r4ZPvl615B/qRX/In/A==",
   "success": true,
   "projectFilePath": "C:\\Users\\Victor Hugo\\Desktop\\Projetos\\challenge-20220626\\challenge-20220626.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Victor Hugo\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512",
     "C:\\Users\\Victor Hugo\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
+    "C:\\Users\\Victor Hugo\\.nuget\\packages\\htmlagilitypack\\1.11.46\\htmlagilitypack.1.11.46.nupkg.sha512",
     "C:\\Users\\Victor Hugo\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.1\\microsoft.aspnetcore.openapi.7.0.1.nupkg.sha512",
     "C:\\Users\\Victor Hugo\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\Victor Hugo\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\2.0.0\\microsoft.extensions.logging.abstractions.2.0.0.nupkg.sha512",

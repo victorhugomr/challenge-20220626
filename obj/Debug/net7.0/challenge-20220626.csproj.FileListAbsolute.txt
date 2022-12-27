@@ -43,3 +43,5 @@ C:\Users\Victor Hugo\Desktop\Projetos\challenge-20220626\bin\Debug\net7.0\ZstdSh
 C:\Users\Victor Hugo\Desktop\Projetos\challenge-20220626\bin\Debug\net7.0\runtimes\linux\native\libmongocrypt.so
 C:\Users\Victor Hugo\Desktop\Projetos\challenge-20220626\bin\Debug\net7.0\runtimes\osx\native\libmongocrypt.dylib
 C:\Users\Victor Hugo\Desktop\Projetos\challenge-20220626\bin\Debug\net7.0\runtimes\win\native\mongocrypt.dll
+C:\Users\Victor Hugo\Desktop\Projetos\challenge-20220626\bin\Debug\net7.0\HtmlAgilityPack.dll
+C:\Users\Victor Hugo\Desktop\Projetos\challenge-20220626\bin\Debug\net7.0\CsvHelper.dll
