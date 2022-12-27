@@ -8,6 +8,7 @@ Desafio realizado pela Coodesh como teste técnico para vaga de Backend .NET/C# 
 
 - .NET/C# 7.0.101
 - MongoDB Atlas
+- Visual Studio Code
 
 
 ## Instruções para instalação
