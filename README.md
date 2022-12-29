@@ -1,6 +1,6 @@
 # Backend Challenge 20220626
 
-Desafio realizado pela Coodesh como teste técnico para vaga de Backend .NET/C# Developer (Júnior)
+API para requisições GET e sistema CRON para Web Scrap. Desafio realizado pela Coodesh como teste técnico para vaga de Backend .NET/C# Developer (Júnior)
 >  This is a challenge by [Coodesh](https://coodesh.com/)
 
 
