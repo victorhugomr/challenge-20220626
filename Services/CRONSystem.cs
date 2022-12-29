@@ -10,19 +10,22 @@ using challenge_20220626.Models;
 namespace challenge_20220626.Services{
     public class CRONSystem{
 
+        
+
         static HtmlDocument GetDocument(string url){
-            var web = new HtmlWeb();
+            HtmlWeb web = new HtmlWeb();
             HtmlDocument doc = web.Load(url);
             return doc;
         }
 
         static List<string> GetProductLinks(string url){
             var doc = GetDocument(url);
-            var linkNodes = doc.DocumentNode.SelectNodes("//li/a");
-
+            var linkNodes = doc.DocumentNode.SelectNodes("//a[@class=\"list_product_a\"]");
+            Console.WriteLine(linkNodes);
             var baseUri = new Uri(url);
             var links = new List<string>();
-            foreach (var node in linkNodes){
+
+            foreach(var node in linkNodes){
                 var link = node.Attributes["href"].Value;
                 link = new Uri(baseUri, link).AbsoluteUri;
                 links.Add(link);
@@ -32,9 +35,10 @@ namespace challenge_20220626.Services{
 
         private static List<Product> GetProducts(List<string> links){
             var products = new List<Product>();
-            foreach (var link in links){
+            foreach(var link in links){
                 var doc = GetDocument(link);
                 var product = new Product();
+
                 product.code = long.Parse(doc.DocumentNode.SelectSingleNode("span#barcode").InnerText);
                 product.barcode = doc.DocumentNode.SelectSingleNode("barcode_paragraph").InnerText;
                 product.status = "imported";
@@ -64,12 +68,12 @@ namespace challenge_20220626.Services{
 
         }
 
-        static void WebScraper(){
+        public void WebScraper(){
             string url = "https://world.openfoodfacts.org/";
             var links = GetProductLinks(url);
             List<Product> products = GetProducts(links);
-            Export(products);
-            // Console.Write(doc.DocumentNode.InnerHtml);
+
+            //Export(products);
         }
     }
 }

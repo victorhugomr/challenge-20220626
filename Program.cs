@@ -18,6 +18,7 @@ class Program{
         builder.Services.Configure<ProductDatabaseSettings>
             (builder.Configuration.GetSection("OpenFoodFactsDatabase"));
 
+        builder.Services.AddSingleton<CRONSystem>();
         builder.Services.AddSingleton<ProductServices>();
 
         builder.Services.AddControllers();
@@ -27,8 +28,7 @@ class Program{
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
-        if (app.Environment.IsDevelopment())
-        {
+        if (app.Environment.IsDevelopment()){
             app.UseSwagger();
             app.UseSwaggerUI();
         }
