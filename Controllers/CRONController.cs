@@ -3,8 +3,7 @@ using System.Timers;
 using challenge_20220626.Services;
 
 namespace challenge_20220626.Controllers{
-    [Route("/scraper")]
-    [ApiController]
+    
     public class CRONController : Controller{
         
         private readonly CRONSystem _cronSystem;
@@ -13,8 +12,7 @@ namespace challenge_20220626.Controllers{
             _cronSystem = cronSystem;
         }
 
-        [HttpGet]
-        public void Nome()
+        public void CRON()
             => _cronSystem.WebScraper();
 
     }

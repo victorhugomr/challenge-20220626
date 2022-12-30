@@ -15,11 +15,13 @@ namespace challenge_20220626.Services{
                 (productServices.Value.productCollectionName);
         }
 
-        public async Task<List<Product>> GetAsync() =>
+        public async Task<List<Product>> GetAll() =>
             await _productCollection.Find(x => true).ToListAsync();
-        public async Task<Product> GetAsync(long code) =>
+        public async Task<Product> GetOne(long code) =>
            await _productCollection.Find(x => x.code == code).FirstOrDefaultAsync();
-        public async Task CreateAsync(Product product) =>
+        public async Task CreateMany(List<Product> product) =>
+            await _productCollection.InsertManyAsync(product);
+        public async Task CreateOne(Product product) =>
             await _productCollection.InsertOneAsync(product);
         public async Task UpdateAsync(string id, Product product) =>
            await _productCollection.ReplaceOneAsync(x => x.id == id, product);

@@ -21,12 +21,12 @@ namespace challenge_20220626.Controllers{
         [HttpGet]
         [Route("products")]
         public async Task<List<Product>> GetProducts()
-            => await _productServices.GetAsync();
+            => await _productServices.GetAll();
 
         [HttpGet]
         [Route("products/{code}")]
         public async Task<Product> GetProduct(long code)
-            => await _productServices.GetAsync(code);
+            => await _productServices.GetOne(code);
 
     }
 }
