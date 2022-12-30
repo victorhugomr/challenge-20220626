@@ -28,5 +28,5 @@ Para instalar o HtmlAgilityPack, basta inserir o seguinte comando no Terminal:
 Para instalar o CsvHelper, basta inserir o seguinte comando no Terminal:
 > dotnet add package CsvHelper --version 30.0.1
 
-Para instalar o Microsoft.Extensions.Hostin, basta inserir o seguinte comando no Terminal:
-> dotnet add package Microsoft.Extensions.Hosting --version 7.0.0
+Para instalar o Cronos, basta inserir o seguinte comando no Terminal:
+> dotnet add package Cronos --version 0.7.1
