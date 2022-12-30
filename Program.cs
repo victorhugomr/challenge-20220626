@@ -18,8 +18,8 @@ class Program{
         builder.Services.Configure<ProductDatabaseSettings>
             (builder.Configuration.GetSection("OpenFoodFactsDatabase"));
 
-        builder.Services.AddSingleton<CRONSystem>();
         builder.Services.AddSingleton<ProductServices>();
+        builder.Services.AddSingleton<ScrapingService>();
 
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();

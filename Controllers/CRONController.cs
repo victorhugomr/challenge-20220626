@@ -1,14 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Timers;
 using challenge_20220626.Services;
 
 namespace challenge_20220626.Controllers{
-    
+    [ApiController]
+    [Route("/cron")]
     public class CRONController : Controller{
         
-        private readonly CRONSystem _cronSystem;
+        private readonly ScrapingService _cronSystem;
 
-        public CRONController(CRONSystem cronSystem){
+        public CRONController(ScrapingService cronSystem){
             _cronSystem = cronSystem;
         }
 

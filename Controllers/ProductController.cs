@@ -1,11 +1,10 @@
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using challenge_20220626.Models;
 using challenge_20220626.Services;
 
 namespace challenge_20220626.Controllers{
-    [Route("/")]
     [ApiController]
+    [Route("/")]
     public class ProductController : ControllerBase{
         
         private readonly ProductServices _productServices;

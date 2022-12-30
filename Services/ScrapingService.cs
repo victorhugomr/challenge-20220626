@@ -1,20 +1,12 @@
-using CsvHelper;
 using HtmlAgilityPack;
-using MongoDB.Driver;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Text.RegularExpressions;
 using challenge_20220626.Models;
-using challenge_20220626.Services;
 
 namespace challenge_20220626.Services{
-    public class CRONSystem{
+    public class ScrapingService{
 
         private readonly ProductServices _productServices;
 
-        public CRONSystem(ProductServices productServices){
+        public ScrapingService(ProductServices productServices){
             _productServices = productServices;
         }
         
