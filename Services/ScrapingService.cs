@@ -1,5 +1,6 @@
 using HtmlAgilityPack;
 using challenge_20220626.Models;
+using challenge_20220626.Services;
 
 namespace challenge_20220626.Services{
     public class ScrapingService{
@@ -124,12 +125,35 @@ namespace challenge_20220626.Services{
             return products;
         }
 
-        public async void WebScraper(){
+        public async Task<List<Product>> UpdateDatabase(){
             string url = "https://world.openfoodfacts.org/";
             var links = GetProductLinks(url);
             List<Product> products = GetProducts(links);
+            List<Product> productsDB = await _productServices.GetAll();
+            List<Product> updateDatabase = new List<Product>();
 
-            await _productServices.CreateMany(products);
+            if(productsDB.Count > 0){
+                foreach(var product in products){
+                    int count = 0;
+                    foreach(var productDB in productsDB){
+                        if(product.code == productDB.code){
+                            count ++;
+                        }
+                    }
+                    if(count == 0){
+                        updateDatabase.Add(product);
+                    }
+                }
+                if(updateDatabase.Count > 0){
+                    return updateDatabase;
+                }
+            }
+            return products;
+        }
+
+        public async void WebScraper(){
+            List<Product> updateDatabase = await UpdateDatabase();
+            await _productServices.CreateMany(updateDatabase);
         }
     }
 }
