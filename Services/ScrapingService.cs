@@ -34,7 +34,7 @@ namespace challenge_20220626.Services{
         private static List<Product> GetProducts(List<string> links){
             var products = new List<Product>();
             //Limitar a importação a somente 100 produtos;
-            foreach(var link in links.Take(100)){
+            foreach(var link in links.Take(1)){
                 var product = new Product();
                 var doc = GetDocument(link);
                 
@@ -125,35 +125,40 @@ namespace challenge_20220626.Services{
             return products;
         }
 
-        public async Task<List<Product>> UpdateDatabase(){
-            string url = "https://world.openfoodfacts.org/";
+        public async Task<List<Product>> UpdateDatabase(string url){
             var links = GetProductLinks(url);
             List<Product> products = GetProducts(links);
             List<Product> productsDB = await _productServices.GetAll();
             List<Product> updateDatabase = new List<Product>();
 
-            if(productsDB.Count > 0){
+            if(productsDB.Count == 0){
+                return products;
+            }
+            else{
+                if(productsDB.Count > 0){
                 foreach(var product in products){
-                    int count = 0;
+                    int flag = 0;
                     foreach(var productDB in productsDB){
                         if(product.code == productDB.code){
-                            count ++;
+                            flag = 1;
                         }
                     }
-                    if(count == 0){
+                    if(flag == 0){
                         updateDatabase.Add(product);
                     }
                 }
-                if(updateDatabase.Count > 0){
-                    return updateDatabase;
-                }
             }
-            return products;
+            return updateDatabase;
+            }
         }
 
         public async void WebScraper(){
-            List<Product> updateDatabase = await UpdateDatabase();
-            await _productServices.CreateMany(updateDatabase);
+            string url = "https://world.openfoodfacts.org/";
+            List<Product> updateDatabase = await UpdateDatabase(url);
+
+            if(updateDatabase.Count != 0){
+                await _productServices.CreateMany(updateDatabase);
+            }
         }
     }
 }
