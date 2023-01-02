@@ -34,7 +34,7 @@ namespace challenge_20220626.Services{
         private static List<Product> GetProducts(List<string> links){
             var products = new List<Product>();
             //Limitar a importação a somente 100 produtos;
-            foreach(var link in links.Take(1)){
+            foreach(var link in links.Take(100)){
                 var product = new Product();
                 var doc = GetDocument(link);
                 
