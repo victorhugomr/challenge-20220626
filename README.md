@@ -28,5 +28,5 @@ Para instalar o HtmlAgilityPack, basta inserir o seguinte comando no Terminal:
 Para instalar o CsvHelper, basta inserir o seguinte comando no Terminal:
 > dotnet add package CsvHelper --version 30.0.1
 
-Para instalar o Cronos, basta inserir o seguinte comando no Terminal:
-> dotnet add package Cronos --version 0.7.1
+Para instalar o Quartz, basta inserir o seguinte comando no Terminal:
+> dotnet add package Quartz --version 3.5.0
