@@ -1,45 +1,75 @@
-using MongoDB.Bson;
-using MongoDB.Driver;
-using System;
-using System.IO;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
+using Quartz;
+using Quartz.Impl;
+using Quartz.Spi;
+
+using challenge_20220626.JobFactory;
+using challenge_20220626.Jobs;
 using challenge_20220626.Models;
+using challenge_20220626.Schedular;
 using challenge_20220626.Services;
 
-class Program{
-    
-    static void Main(string[] args){
+namespace challenge_20220626{
 
-        var builder = WebApplication.CreateBuilder(args);
+    public class Program{
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>{
+                    webBuilder
+                    .ConfigureServices((hostContext, services) =>{
+                        // Add services to the container.
+                        services.Configure<ProductDatabaseSettings>
+                            (WebApplication.CreateBuilder(args).Configuration.GetSection("OpenFoodFactsDatabase"));
 
-        // Add services to the container.
-        builder.Services.Configure<ProductDatabaseSettings>
-            (builder.Configuration.GetSection("OpenFoodFactsDatabase"));
+                        services.AddSingleton<IJobFactory, MyJobFactory>();
+                        services.AddSingleton<ISchedulerFactory, StdSchedulerFactory>();                    
 
-        builder.Services.AddSingleton<ProductServices>();
-        builder.Services.AddSingleton<ScrapingService>();
+                        services.AddSingleton<ProductServices>();
+                        services.AddSingleton<ScrapingService>();
 
-        builder.Services.AddControllers();
-        builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
+                        services.AddControllers();
+                        services.AddEndpointsApiExplorer();
+                        //Descrever a documentação da API utilizando o conceito de Open API 3.0;
+                        services.AddSwaggerGen();
 
-        var app = builder.Build();
+                        #region Adding JobType
+                        services.AddSingleton<NotificationJob>();
+                        services.AddSingleton<LoggerJob>();
+                        services.AddSingleton<CronJob>();
+                        #endregion
 
-        // Configure the HTTP request pipeline.
-        if (app.Environment.IsDevelopment()){
-            app.UseSwagger();
-            app.UseSwaggerUI();
+                        #region Adding Jobs 
+                        List<JobMetadata> jobMetadatas = new List<JobMetadata>();
+                        // jobMetadatas.Add(new JobMetadata(Guid.NewGuid(), typeof(NotificationJob), "Notify Job", "0/10 * * * * ?"));
+                        // jobMetadatas.Add(new JobMetadata(Guid.NewGuid(), typeof(LoggerJob), "Log Job", "0/20 * * * * ?"));
+                        jobMetadatas.Add(new JobMetadata(Guid.NewGuid(), typeof(CronJob), "Cron Job", "0 0 3 * * ?"));
+                        
+                        services.AddSingleton(jobMetadatas);
+                        #endregion
+
+                        services.AddHostedService<MySchedular>();
+                })
+                .Configure(app =>{
+                    app.UseHttpsRedirection();
+
+                    app.UseRouting();
+
+                    app.UseAuthorization();
+
+                    app.UseEndpoints(endpoints =>
+                    {
+                        endpoints.MapControllers();
+                    });
+
+                    app.UseSwagger();
+                    app.UseSwaggerUI(options =>{
+                        options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+                        options.RoutePrefix = string.Empty;
+                    });
+                });
+            });
+
+        public static void Main(string[] args){
+            CreateHostBuilder(args).Build().Run();
         }
-
-        app.UseHttpsRedirection();
-
-        app.UseAuthorization();
-
-        app.MapControllers();
-
-        app.Run();
     }
-    
 }
