@@ -28,7 +28,6 @@ namespace challenge_20220626{
 
                         services.AddControllers();
                         services.AddEndpointsApiExplorer();
-                        //Descrever a documentação da API utilizando o conceito de Open API 3.0;
                         services.AddSwaggerGen();
 
                         #region Adding JobType
@@ -59,7 +58,8 @@ namespace challenge_20220626{
                     {
                         endpoints.MapControllers();
                     });
-
+                    
+                    //Diferencial 3 Descrever a documentação da API utilizando o conceito de Open API 3.0;
                     app.UseSwagger();
                     app.UseSwaggerUI(options =>{
                         options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");

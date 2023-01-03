@@ -1,13 +1,9 @@
 using HtmlAgilityPack;
-using challenge_20220626.Models;
-using challenge_20220626.Services;
 
 using Quartz;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
+
+using challenge_20220626.Models;
+using challenge_20220626.Services;
 
 namespace challenge_20220626.Jobs{
     public class CronJob : IJob{

@@ -1,9 +1,4 @@
 using Quartz;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
 
 namespace challenge_20220626.Jobs
 {
