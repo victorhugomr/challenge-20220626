@@ -45,6 +45,7 @@ Para clonar o repositório, você também pode executar cada amostra diretamente
 * Execute a seguinte amostra no Terminal para iniciar:
 ```
      > dotnet run
+```
 
 ## Inicializando o projeto através do Docker 🐳
 * Instale o Docker adequado ao seu sistema em [https://www.docker.com/](https://www.docker.com/).
@@ -60,10 +61,10 @@ Para clonar o repositório, você também pode executar cada amostra diretamente
 -{image} será a imagem utilizada para a criação do container.
 ```
     PM> docker run -d -p {port}:80 --name {name} {image}
+```
 
 Após a execução, estarão disponíveis para visualização no navegador, a partir do localhost, as seguintes rotas HttpGet:
+
 * **/** Retorna um Status: 200 e uma Mensagem "Fullstack Challenge 20201026";
-```
 * **/products/** Lista todos os produtos da base de dados;
-```
 * **/products/:_code_** Obtém a informação de um produto através do _code_ do produto.
