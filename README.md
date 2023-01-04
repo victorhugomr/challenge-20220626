@@ -56,9 +56,11 @@ Para clonar o repositório, você também pode executar cada amostra diretamente
 ```
     PM> docker run -d -p 5000:80 --name challenge-20220626 challenge-20220626
 ```
--{port}: será a porta que você poderá acessar através do localhost (ex: http://localhost:5000/);
--{name}: será o nome do container a ser executado;
--{image} será a imagem utilizada para a criação do container.
+{port}: será a porta que você poderá acessar através do localhost (ex: http://localhost:5000/);
+
+{name}: será o nome do container a ser executado;
+
+{image} será a imagem utilizada para a criação do container.
 ```
     PM> docker run -d -p {port}:80 --name {name} {image}
 ```
