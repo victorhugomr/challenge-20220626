@@ -49,9 +49,9 @@ Para clonar o repositório, você também pode executar cada amostra diretamente
 
 ## Inicializando o projeto através do Docker 🐳
 * Instale o Docker adequado ao seu sistema em [https://www.docker.com/](https://www.docker.com/).
-```
+
 * Após o clone do repositório e da instalação do Docker, execute o Docker. Utilizar a extensão Docker no VS Code facilita a visualização.
-```
+
 * No Terminal, dentro do diretório clonado, execute o seguinte comando:
 ```
     PM> docker run -d -p 5000:80 --name challenge-20220626 challenge-20220626
@@ -65,6 +65,6 @@ Para clonar o repositório, você também pode executar cada amostra diretamente
 
 Após a execução, estarão disponíveis para visualização no navegador, a partir do localhost, as seguintes rotas HttpGet:
 
-* **/** Retorna um Status: 200 e uma Mensagem "Fullstack Challenge 20201026";
-* **/products/** Lista todos os produtos da base de dados;
-* **/products/:_code_** Obtém a informação de um produto através do _code_ do produto.
+* **/**: Retorna um Status: 200 e uma Mensagem "Fullstack Challenge 20201026";
+* **/products/**: Lista todos os produtos da base de dados;
+* **/products/:_code_**: Obtém a informação de um produto através do _code_ do produto.
