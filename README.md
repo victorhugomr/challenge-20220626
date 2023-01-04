@@ -1,4 +1,4 @@
-# Backend Challenge 20220626
+# Backend Challenge 20220626 😎
 
 Este repositório contém os códigos do projeto que demonstram a integração C# com o [MongoDB Atlas](https://www.mongodb.com/atlas/database).
 
@@ -45,7 +45,22 @@ Para clonar o repositório, você também pode executar cada amostra diretamente
 * Execute a seguinte amostra no Terminal para iniciar:
 ```
      > dotnet run
+
+## Inicializando o projeto através do Docker 🐳
+* Instale o Docker adequado ao seu sistema em [https://www.docker.com/](https://www.docker.com/).
 ```
+* Após o clone do repositório e da instalação do Docker, execute o Docker. Utilizar a extensão Docker no VS Code facilita a visualização.
+```
+* No Terminal, dentro do diretório clonado, execute o seguinte comando:
+```
+    PM> docker run -d -p 5000:80 --name challenge-20220626 challenge-20220626
+```
+-{port}: será a porta que você poderá acessar através do localhost (ex: http://localhost:5000/);
+-{name}: será o nome do container a ser executado;
+-{image} será a imagem utilizada para a criação do container.
+```
+    PM> docker run -d -p {port}:80 --name {name} {image}
+
 Após a execução, estarão disponíveis para visualização no navegador, a partir do localhost, as seguintes rotas HttpGet:
 * **/** Retorna um Status: 200 e uma Mensagem "Fullstack Challenge 20201026";
 ```
